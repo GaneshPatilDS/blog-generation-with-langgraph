@@ -8,3 +8,10 @@ build/
 
 .python-version
 .langgraph_api/
+
+blogs/
+
+# Log files
+app.log
+error.log
+
