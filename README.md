@@ -17,27 +17,34 @@ This project is an agentic AI-powered blog generation system built with FastAPI,
 
 ---
 
-## 🗂️ Project Structure
+## 📁 Project Structure
+
 ```
-app.py                # FastAPI backend (main entry point)
-streamlit_app.py      # Streamlit web UI
-src/
-  llms/
-    groqllm.py        # LLM integration
-  graphs/
-    graph_builder.py  # Graph construction logic
-  nodes/
-    blog_node.py      # Blog generation and translation nodes
-  states/
-    blogstate.py      # State management for blog generation
-  utils/
-    logger.py         # Logging utilities
-    exception_handler.py # Custom exception handling
-blogs/                # All generated blog Markdown files are saved here
-requirements.txt      # Python dependencies
-pyproject.toml        # Project metadata
-README.md             # Project documentation
-```
+├── app.py                    # 🚀 FastAPI backend - main entry point
+├── streamlit_app.py          # 🌐 Streamlit web UI
+
+├── src/
+│   ├── llms/
+│   │   └── groqllm.py              # 🤖 Groq LLM integration logic
+│   │
+│   ├── graphs/
+│   │   └── graph_builder.py        # 🧠 Agentic graph construction using LangGraph
+│   │
+│   ├── nodes/
+│   │   └── blog_node.py            # ✍️ Nodes for blog generation and language translation
+│   │
+│   ├── states/
+│   │   └── blogstate.py            # 📌 State definitions and management for blog generation
+│   │
+│   └── utils/
+│       ├── logger.py               # 📝 Centralized logging utility
+│       └── exception_handler.py    # ❗ Custom exception handling logic
+
+├── blogs/                   # 📄 Output folder for all generated blog markdown files
+
+├── requirements.txt         # 📦 List of Python dependencies
+├── pyproject.toml           # ⚙️ Project metadata and build configuration
+└── README.md                # 📘 Project documentation (you’re reading it!)
 
 ---
 
