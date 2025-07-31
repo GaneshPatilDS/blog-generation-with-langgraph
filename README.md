@@ -45,15 +45,20 @@ This project is an agentic AI-powered blog generation system built with FastAPI,
 ├── requirements.txt         # 📦 List of Python dependencies
 ├── pyproject.toml           # ⚙️ Project metadata and build configuration
 └── README.md                # 📘 Project documentation (you’re reading it!)
+   ---
 
----
 
-## ⚡ Getting Started
+
+   
+   ```
+## ⚡ Getting Started   
+
 1. **Install dependencies**:
    ```powershell
    pip install -r requirements.txt
    pip install streamlit
-   ```
+   ```   
+
 2. **Start the FastAPI backend**:
    ```powershell
    python app.py
