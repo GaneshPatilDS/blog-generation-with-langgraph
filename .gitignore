@@ -16,3 +16,4 @@ app.log
 error.log
 
 .vscode/
+logs/

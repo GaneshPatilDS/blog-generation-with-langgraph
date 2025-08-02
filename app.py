@@ -55,21 +55,35 @@ async def create_blogs(request: Request):
         blog = state.get("blog", {})
         title = blog.get("title", "untitled-blog")
         content = blog.get("content", "")
-        # Sanitize title for filename
-        safe_title = re.sub(r'[^a-zA-Z0-9_-]', '_', title)[:50]
+        
+       # 1. Create a clean, URL-friendly "slug" from the title
+        safe_title = title.lower().strip()
+        safe_title = re.sub(r'\s+', '-', safe_title)
+        safe_title = re.sub(r'[^a-z0-9-]', '', safe_title)
+        safe_title = re.sub(r'-+', '-', safe_title)
+        safe_title = safe_title[:60].strip('-')
+
+        # 2. Define the directory path including the language
+        language_folder = os.path.join("blogs", current_language)
+        
+        # 3. Create the language-specific directory if it doesn't exist
+        os.makedirs(language_folder, exist_ok=True)
+
+        # 4. Construct the final filename
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"blogs/{safe_title}_{timestamp}.md"
-        os.makedirs("blogs", exist_ok=True)
+        filename = os.path.join(language_folder, f"{safe_title}_{timestamp}.md")
+        
         with open(filename, "w", encoding="utf-8") as f:
             f.write(f"# {title}\n\n{content}")
         log.info(f"Blog saved to {filename}")
-
+        # ---------------------------------------------------------
         return {"data": state}
 
     except APIException as e:
         # This will be handled by your custom handler, but you can log here if you want
         log.error(f"APIException: {e.detail}")
         raise
+    
     except Exception as e:
         log.error(f"Unhandled Exception: {e}")
         raise
